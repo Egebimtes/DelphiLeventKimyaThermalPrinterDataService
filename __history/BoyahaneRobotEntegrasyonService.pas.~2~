@@ -1,0 +1,182 @@
+unit BoyahaneRobotEntegrasyonService;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.SvcMgr, Vcl.Dialogs,
+  Vcl.ExtCtrls, System.IniFiles, ADODB;
+
+type
+  TBoyahaneRobotEntegrasyonMain = class(TService)
+    TimerServis: TTimer;
+    procedure ServiceCreate(Sender: TObject);
+    procedure ServiceExecute(Sender: TService);
+    procedure TimerServisTimer(Sender: TObject);
+  private
+    { Private declarations }
+    Durum:Boolean;
+    procedure Servis;
+    procedure DosyaLogYaz(aMesaj: String);
+  public
+    function GetServiceController: TServiceController; override;
+    { Public declarations }
+  end;
+
+var
+  BoyahaneRobotEntegrasyonMain: TBoyahaneRobotEntegrasyonMain;
+
+implementation
+
+{$R *.dfm}
+
+uses dmMAS;
+
+procedure ServiceController(CtrlCode: DWord); stdcall;
+begin
+  BoyahaneRobotEntegrasyonMain.Controller(CtrlCode);
+end;
+
+function TBoyahaneRobotEntegrasyonMain.GetServiceController: TServiceController;
+begin
+  Result := ServiceController;
+end;
+
+procedure TBoyahaneRobotEntegrasyonMain.ServiceCreate(Sender: TObject);
+var
+  qry:TADOQuery;
+  IniDosya: TIniFile;
+  SorguYenilemeSn:Integer;
+
+begin
+
+  try
+    try
+      IniDosya := TIniFile.Create('C:\Services\BoyahaneRobotEntegrasyon\BoyahaneRobotEntegrasyon.ini');
+
+      SorguYenilemeSn := IniDosya.ReadInteger('AYAR','SorguYenilemeSn',3);
+
+      iniDosya.Free;
+
+      TimerServis.Enabled := False;
+
+      TimerServis.Interval := SorguYenilemeSn;
+
+
+    except on E:Exception do
+
+    end;
+
+  finally
+
+
+  end;
+
+end;
+
+procedure TBoyahaneRobotEntegrasyonMain.ServiceExecute(Sender: TService);
+begin
+  TimerServis.Enabled := True;
+
+  while not Terminated do
+    ServiceThread.ProcessRequests(True); // wait for termination
+
+  TimerServis.Enabled := False;
+end;
+
+procedure TBoyahaneRobotEntegrasyonMain.Servis;
+var
+  q3: TADOQuery;
+  FileName:string;
+  AktarimStatu:Integer;
+  Acikalama:string;
+begin
+  q3 := TADOQuery.Create(nil);
+  q3.Connection := dm.conMAS;
+  try
+    try
+
+      q3.Close;
+      q3.SQL.Clear;
+      q3.SQL.Add('[dbo].[sp_RobotDbAlarmKontrol] ');
+      q3.ExecSQL;
+
+      q3.Close;
+      q3.SQL.Clear;
+      q3.SQL.Add('[dbo].[sp_RobotDbAlarmKontrol2] ');
+      q3.ExecSQL;
+
+      q3.Close;
+      q3.SQL.Clear;
+      q3.SQL.Add('[dbo].[sp_RobotDbAlarmKontrol3] ');
+      q3.ExecSQL;
+
+      q3.Close;
+      q3.SQL.Clear;
+      q3.SQL.Add('[dbo].[sp_RobotDbAlarmKontrol4] ');
+      q3.ExecSQL;
+//      q3.Close;
+//      q3.SQL.Clear;
+//      q3.SQL.Add('EXECUTE [Automation].[sp_WebReadPLC] :PLCIP,''''');
+//      q3.Parameters.ParamByName('PLCIP').Value:=PLCIP;
+//      q3.ExecSQL;
+
+
+    except on e:Exception do
+      begin
+        DosyaLogYaz(DateTimeToStr(now)+'PLC Web Servisten Veri Çekilirken Hata Oluþtu');
+        Durum:= False;
+
+      end;
+    end;
+  finally
+    q3.Close;
+    FreeAndNil(q3);
+
+  end;
+
+end;
+
+procedure TBoyahaneRobotEntegrasyonMain.TimerServisTimer(Sender: TObject);
+begin
+  Durum:= True;
+  TimerServis.Enabled:= False;
+  try
+    try
+      Servis;
+
+      if Durum = False then
+      begin
+        //dm.DataModuleCreate(Sender);
+        dm.conMAS.Close;
+        dm.conMAS.Open;
+      end;
+
+    except
+      //dm.conMAS.Close;
+      //dm.conMAS.Open;
+      //TimerServis.Enabled := False;
+      //TimerServis.Enabled := True;
+    end;
+  finally
+    TimerServis.Enabled:= True;
+  end;
+
+end;
+
+procedure TBoyahaneRobotEntegrasyonMain.DosyaLogYaz(aMesaj:String);
+var
+Dosya: Textfile;
+begin
+  if (FileExists('C:\Services\BoyahaneRobotEntegrasyon\BoyahaneRobotEntegrasyonLog.txt')=false) then
+  Begin
+    AssignFile(Dosya, 'C:\Services\BoyahaneRobotEntegrasyon\BoyahaneRobotEntegrasyonLog.txt');
+    ReWrite(Dosya);
+  End;
+
+  AssignFile(Dosya, 'C:\Services\BoyahaneRobotEntegrasyon\BoyahaneRobotEntegrasyonLog.txt');
+  //Reset(Dosya);
+  Append(Dosya);
+  Writeln(Dosya, aMesaj);
+  Closefile(Dosya);
+end;
+end.

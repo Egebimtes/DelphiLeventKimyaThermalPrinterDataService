@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.887,E:\PROJECTS\DIGER\Markalama\BoyahaneHangerIzlemeServis.dfm=E:\PROJECTS\DIGER\Markalama\MarkalamaEntegrasyonServis.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.590,=D:\Documents\LeventKimya\TermalYazici\PLCDataProcessService\dmMAS.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.363,C:\MasProjects\MAS3\DelphiTurkTraktor\PLCDataProcessService\BoyahaneRobotEntegrasyonService.dfm=C:\MasProjects\MAS3\DelphiTurkTraktor\PLCDataProcessService\PLCDataProcessService.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.935,D:\Documents\LeventKimya\TermalYazici\PLCDataProcessService\ThermalPrinterDataServiceUnit.dfm=D:\Documents\LeventKimya\TermalYazici\PLCDataProcessService\BoyahaneRobotEntegrasyonService.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.896,=C:\MasProjects\MAS3\DelphiTurkTraktor\BoyahaneRobotEntegrasyon\dmMAS.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.628,E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\dmMAS.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.384,E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\dmMAS.pas=</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.808,=E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\dmMAS.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.363,C:\MasProjects\MAS3\DelphiTurkTraktor\PLCDataProcessService\BoyahaneRobotEntegrasyonService.pas=C:\MasProjects\MAS3\DelphiTurkTraktor\PLCDataProcessService\PLCDataProcessService.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.887,E:\PROJECTS\DIGER\Markalama\BoyahaneHangerIzlemeServis.pas=E:\PROJECTS\DIGER\Markalama\MarkalamaEntegrasyonServis.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.938,E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\PLCDataReadService.pas=E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\MarkalamaEntegrasyonServis.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.093,=E:\PROJECTS\DIGER\Leuze\Services\PLCDataProcessService\dmMAS.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.108,E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\PLCDataRead.dproj=E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\MarkalamaEntegrasyon.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.716,E:\PROJECTS\DIGER\Leuze\Services\PLCDataProcessService\PLCDataProcess.dproj=E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\PLCDataRead.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.331,C:\MasProjects\MAS3\DelphiTurkTraktor\PLCDataProcessService\BoyahaneRobotEntegrasyon.dproj=C:\MasProjects\MAS3\DelphiTurkTraktor\PLCDataProcessService\PLCDataProcess.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.935,D:\Documents\LeventKimya\TermalYazici\PLCDataProcessService\ThermalPrinterDataServiceUnit.pas=D:\Documents\LeventKimya\TermalYazici\PLCDataProcessService\BoyahaneRobotEntegrasyonService.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.023,E:\PROJECTS\DIGER\Leuze\Services\PLCDataProcessService\PLCDataProcessService.pas=E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\PLCDataReadService.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.482,E:\PROJECTS\DIGER\Markalama\BoyahaneHangerIzleme.dproj=E:\PROJECTS\DIGER\Markalama\MarkalamaEntegrasyon.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.023,E:\PROJECTS\DIGER\Leuze\Services\PLCDataProcessService\PLCDataProcessService.dfm=E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\PLCDataReadService.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.938,E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\PLCDataReadService.dfm=E:\PROJECTS\DIGER\Leuze\Services\PLCDataReadService\MarkalamaEntegrasyonServis.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.421,D:\Documents\LeventKimya\TermalYazici\PLCDataProcessService\BoyahaneRobotEntegrasyon.dproj=D:\Documents\LeventKimya\TermalYazici\PLCDataProcessService\ThermalPrinterDataService.dproj</Transaction>
+  </Transactions>
+</BorlandProject>

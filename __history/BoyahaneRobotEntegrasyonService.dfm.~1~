@@ -1,0 +1,14 @@
+object BoyahaneRobotEntegrasyonMain: TBoyahaneRobotEntegrasyonMain
+  OldCreateOrder = False
+  OnCreate = ServiceCreate
+  DisplayName = 'BoyahaneRobotEntegrasyon'
+  OnExecute = ServiceExecute
+  Height = 150
+  Width = 215
+  object TimerServis: TTimer
+    Enabled = False
+    OnTimer = TimerServisTimer
+    Left = 88
+    Top = 40
+  end
+end
