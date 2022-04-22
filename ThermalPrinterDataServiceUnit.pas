@@ -96,7 +96,7 @@ var
   HttpReturn,workCenterCode,materialCode,materialName,lotNumber:String;
   workCenterId,batchAmount,batchBarcodeCounter,plcBatchAmount,plcBatchBarcodeCounter,lastBatchBarcodeCounter:Integer;
   Time1,Time2:TDateTime;
-  ProcessTimeSn,VirgulKarakterSira:Integer;
+  ProcessTimeSn,VirgulKarakterSira,productionMasterId:Integer;
 begin
   qrySorgu := TADOQuery.Create(nil);
   qrySorgu.Connection := dm.conMAS;
@@ -111,6 +111,7 @@ begin
       Begin
         SQL.Add(' SELECT ');
         SQL.Add(' WC.[Id] AS WorkCenterId, ');
+        SQL.Add(' PM.[Id] AS ProductionMasterId, ');
         SQL.Add(' WC.[Code] AS WorkCenterCode, ');
         SQL.Add(' MAT.[Code] AS MaterialCode, ');
         SQL.Add(' MAT.[Name] AS MaterialName, ');
@@ -144,7 +145,8 @@ begin
 
 
 
-        workCenterId   := qrySorgu.FieldByName('WorkCenterId').AsInteger;
+        workCenterId        := qrySorgu.FieldByName('WorkCenterId').AsInteger;
+        productionMasterId  := qrySorgu.FieldByName('ProductionMasterId').AsInteger;
 
         HttpReturn:=IdHTTP1.Get('http://'+plcIP+'/awp/myApp/ReadBatchInfo'+IntToStr(workCenterId)+'.htm');
 
@@ -166,7 +168,8 @@ begin
         if (plcBatchBarcodeCounter <> batchBarcodeCounter) and (plcBatchBarcodeCounter > 0) then
         Begin
 
-          lotNumber := AnsiRightStr(qrySorgu.FieldByName('MaterialCode').AsString, 5) +'-'+FormatDateTime('ddmmyy',Now)+'-1-'+IntToStr(plcBatchBarcodeCounter);
+          //lotNumber := AnsiRightStr(qrySorgu.FieldByName('MaterialCode').AsString, 5) +'-'+FormatDateTime('ddmmyy',Now)+'-1-'+IntToStr(plcBatchBarcodeCounter);
+          lotNumber := AnsiRightStr(qrySorgu.FieldByName('MaterialCode').AsString, 5) +'-'+ FormatDateTime('ddmmyy',Now) +'-'+  IntToStr(productionMasterId) +'-'+ IntToStr(plcBatchBarcodeCounter);
 
           with qryIslem do
           Begin
